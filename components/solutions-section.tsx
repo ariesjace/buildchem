@@ -53,7 +53,7 @@ export default function SolutionsSection() {
             </div>
             <h3 className="text-4xl md:text-5xl font-bold text-white mb-4">{slide.title}</h3>
             <p className="text-white/90 mb-8 max-w-lg">{slide.description}</p>
-            <Button className="bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-2">Find Out More</Button>
+            <Button className="bg-black hover:bg-gray-800 text-white px-6 py-2">Find Out More</Button>
           </div>
 
           {/* Carousel Controls */}

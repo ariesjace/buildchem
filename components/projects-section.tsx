@@ -10,11 +10,13 @@ export default function ProjectsSection() {
           <div>
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
               OUR IMPACTFUL <br />
-              <span className="bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent">PROJECTS</span>
+              <span className="bg-gradient-to-r from-gray-900 to-amber-900 bg-clip-text text-transparent">
+                PROJECTS
+              </span>
             </h2>
-            <div className="w-16 h-1 bg-gradient-to-r from-cyan-400 to-blue-600 mb-6" />
+            <div className="w-16 h-1 bg-gradient-to-r from-gray-900 to-amber-900 mb-6" />
             <p className="text-gray-600 mb-8 text-lg">FROM PAST TO PRESENT, SEE THE PROJECTS THAT SHAPED US</p>
-            <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-2 transition-all">READ MORE</Button>
+            <Button className="bg-black hover:bg-gray-800 text-white px-8 py-2 transition-all">READ MORE</Button>
           </div>
 
           {/* Right Image */}

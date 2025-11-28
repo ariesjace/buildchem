@@ -22,7 +22,7 @@ export default function BlogSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between mb-12">
           <h2 className="text-4xl md:text-5xl font-bold">What's New</h2>
-          <a href="#" className="text-cyan-500 font-semibold hover:text-cyan-600">
+          <a href="#" className="text-black font-semibold hover:text-gray-700">
             Go to Blogs →
           </a>
         </div>
@@ -30,7 +30,7 @@ export default function BlogSection() {
         <div className="grid md:grid-cols-2 gap-8">
           {blogPosts.map((post, index) => (
             <Card key={index} className="overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow">
-              <div className="relative h-48 bg-gradient-to-r from-blue-500 to-blue-600">
+              <div className="relative h-48 bg-gradient-to-r from-gray-900 to-amber-900">
                 <div className="absolute top-4 left-4 bg-white/20 px-3 py-1 rounded text-white text-xs font-semibold">
                   BUILDCHEM
                 </div>

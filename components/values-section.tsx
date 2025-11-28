@@ -17,7 +17,7 @@ export default function ValuesSection() {
   ]
 
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-r from-cyan-400 via-cyan-300 to-blue-600">
+    <section className="py-16 md:py-24 bg-gradient-to-r from-gray-900 via-amber-800 to-amber-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-12">
           <p className="text-white font-semibold mb-2 text-sm tracking-wide">OUR VALUES</p>

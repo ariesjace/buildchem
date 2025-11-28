@@ -5,13 +5,13 @@ import { Mail, Instagram, Facebook, Youtube } from "lucide-react"
 
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-r from-cyan-400 to-blue-600 text-white py-12 md:py-16">
+    <footer className="bg-gradient-to-r from-gray-900 to-amber-900 text-white py-12 md:py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-3 gap-12">
           {/* Logo */}
           <div>
             <Image
-              src="/images/bc-black.png"
+              src="/images/VAH-white.png"
               alt="BUILDCHEM Logo"
               width={150}
               height={50}

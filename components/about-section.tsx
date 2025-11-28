@@ -9,7 +9,7 @@ export default function AboutSection() {
           <p className="text-gray-600 text-lg mb-6 max-w-2xl">
             BUILDCHEM SOLUTIONS INC., A SUBSIDIARY UNDER PROGRESSIVE MATERIALS SOLUTIONS INC.
           </p>
-          <button className="flex items-center gap-2 text-cyan-500 font-semibold hover:gap-3 transition-all duration-300 hover:text-cyan-600">
+          <button className="flex items-center gap-2 text-black font-semibold hover:gap-3 transition-all duration-300 hover:text-gray-700">
             LEARN MORE <ArrowRight className="w-5 h-5" />
           </button>
         </div>
