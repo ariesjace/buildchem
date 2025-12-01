@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image"
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 import { ChevronDown } from "lucide-react"
 
 export function Navigation() {
@@ -32,9 +32,22 @@ export function Navigation() {
     { label: "BLOGS", href: "#" },
     { label: "CONTACT US", href: "#" },
   ]
+
   const [isMobileOpen, setIsMobileOpen] = useState(false)
   const [openDropdown, setOpenDropdown] = useState<string | null>(null)
   const [mobileExpandedDropdown, setMobileExpandedDropdown] = useState<string | null>(null)
+  const desktopMenuRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (desktopMenuRef.current && !desktopMenuRef.current.contains(event.target as Node)) {
+        setOpenDropdown(null)
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => document.removeEventListener("mousedown", handleClickOutside)
+  }, [])
 
   return (
     <nav
@@ -53,34 +66,57 @@ export function Navigation() {
         />
       </div>
 
-      <div className="hidden md:flex items-center justify-center flex-1">
+      {/* DESKTOP MENU */}
+      <div className="hidden md:flex items-center justify-center flex-1" ref={desktopMenuRef}>
         <div
           className="flex items-center justify-center gap-6 px-8 py-3 rounded-full backdrop-blur-xl border border-amber-600/30 shadow-lg relative"
           style={{
-            background: "linear-gradient(135deg, rgba(26, 20, 16, 0.9) 0%, rgba(18, 14, 10, 0.85) 100%)",
+            background:
+              "linear-gradient(135deg, rgba(26, 20, 16, 0.9) 0%, rgba(18, 14, 10, 0.85) 100%)",
           }}
         >
           {navItems.map((item) => (
-            <div key={item.label} className="relative group">
-              <button
-                className="text-sm font-medium transition-all duration-300 whitespace-nowrap hover:opacity-80 flex items-center gap-1"
+            <div key={item.label} className="relative flex items-center gap-1">
+              {/* TEXT LINK */}
+              <a
+                href={item.href}
+                className="text-sm font-medium transition-all duration-300 whitespace-nowrap hover:opacity-80"
                 style={{ color: "#DCB485" }}
-                onMouseEnter={() => item.dropdown && setOpenDropdown(item.label)}
-                onMouseLeave={() => setOpenDropdown(null)}
               >
                 {item.label}
-                {item.dropdown && (
-                  <ChevronDown className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180" />
-                )}
-              </button>
+              </a>
 
+              {/* ONLY CHEVRON CLICK */}
+              {item.dropdown && (
+                <button
+                  onClick={() =>
+                    setOpenDropdown(openDropdown === item.label ? null : item.label)
+                  }
+                  className="flex items-center"
+                >
+                  <ChevronDown
+                    className={`w-4 h-4 transition-transform duration-300 ${
+                      openDropdown === item.label ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+              )}
+
+              {/* DROPDOWN */}
               {item.dropdown && (
                 <div
-                  className={`absolute top-full left-1/2 transform -translate-x-1/2 mt-2 rounded-lg border border-amber-600/30 backdrop-blur-xl shadow-lg p-4 min-w-max ${
-                    item.twoRows ? "grid grid-cols-2 gap-2" : "flex flex-col gap-2"
-                  } opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 pointer-events-none group-hover:pointer-events-auto`}
+                  className={`absolute top-full left-1/2 transform -translate-x-1/2 mt-2 rounded-lg
+                    border border-amber-600/30 backdrop-blur-xl shadow-lg p-4 min-w-max
+                    ${item.twoRows ? "grid grid-cols-2 gap-2" : "flex flex-col gap-2"}
+                    ${
+                      openDropdown === item.label
+                        ? "opacity-100 visible pointer-events-auto"
+                        : "opacity-0 invisible pointer-events-none"
+                    }
+                    transition-all duration-200`}
                   style={{
-                    background: "linear-gradient(135deg, rgba(26, 20, 16, 0.95) 0%, rgba(18, 14, 10, 0.9) 100%)",
+                    background:
+                      "linear-gradient(135deg, rgba(26, 20, 16, 0.95) 0%, rgba(18, 14, 10, 0.9) 100%)",
                   }}
                 >
                   {item.dropdown.map((subitem) => (
@@ -100,6 +136,7 @@ export function Navigation() {
         </div>
       </div>
 
+      {/* MOBILE TOGGLE */}
       <button
         className="md:hidden flex-shrink-0 p-2"
         onClick={() => setIsMobileOpen(!isMobileOpen)}
@@ -110,19 +147,23 @@ export function Navigation() {
         </svg>
       </button>
 
+      {/* MOBILE MENU */}
       {isMobileOpen && (
         <div
           className="md:hidden absolute top-full left-0 right-0 mt-2 mx-2 flex flex-col gap-2 pb-4 rounded-lg backdrop-blur-xl border border-amber-600/30 p-4 max-h-96 overflow-y-auto mobile-scroll-hide"
           style={{
-            background: "linear-gradient(135deg, rgba(220, 180, 133, 0.1) 0%, rgba(220, 180, 133, 0.05) 100%)",
+            background:
+              "linear-gradient(135deg, rgba(220, 180, 133, 0.1) 0%, rgba(220, 180, 133, 0.05) 100%)",
           }}
         >
           {navItems.map((item) => (
-            <div key={item.label}>
+            <div key={item.label} className="relative">
               <button
                 onClick={() =>
                   item.dropdown
-                    ? setMobileExpandedDropdown(mobileExpandedDropdown === item.label ? null : item.label)
+                    ? setMobileExpandedDropdown(
+                        mobileExpandedDropdown === item.label ? null : item.label
+                      )
                     : null
                 }
                 className="text-sm font-medium px-4 py-2 rounded transition-all duration-300 hover:opacity-80 block w-full text-left flex items-center justify-between"
