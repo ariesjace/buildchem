@@ -7,7 +7,7 @@ import { ChevronDown } from "lucide-react"
 export function Navigation() {
   const navItems = [
     { label: "HOME", href: "#" },
-    { label: "ABOUT US", href: "#" },
+    { label: "ABOUT US", href: "/about" },
     {
       label: "COMPANIES",
       href: "#",
