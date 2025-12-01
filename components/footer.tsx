@@ -28,31 +28,31 @@ export function Footer() {
           {/* Links Column */}
           <div>
             <h4 className="font-semibold mb-4 text-sm md:text-base" style={{ color: "#DCB485" }}>
-              Information
+              INFORMATION
             </h4>
             <ul className="space-y-2 text-xs md:text-sm" style={{ color: "#8b7765" }}>
               <li>
-                <a href="#" className="hover:opacity-80 transition-opacity" style={{ color: "#DCB485" }}>
+                <a href="#" className="hover:opacity-80 transition-opacity" style={{ color: "#FFFFFF" }}>
                   Frequently Asked Questions
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:opacity-80 transition-opacity" style={{ color: "#DCB485" }}>
+                <a href="#" className="hover:opacity-80 transition-opacity" style={{ color: "#FFFFFF" }}>
                   Privacy Policy
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:opacity-80 transition-opacity" style={{ color: "#DCB485" }}>
+                <a href="#" className="hover:opacity-80 transition-opacity" style={{ color: "#FFFFFF" }}>
                   Warranty Policy
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:opacity-80 transition-opacity" style={{ color: "#DCB485" }}>
+                <a href="#" className="hover:opacity-80 transition-opacity" style={{ color: "#FFFFFF" }}>
                   Terms and Conditions
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:opacity-80 transition-opacity" style={{ color: "#DCB485" }}>
+                <a href="#" className="hover:opacity-80 transition-opacity" style={{ color: "#FFFFFF" }}>
                   Careers
                 </a>
               </li>
@@ -76,13 +76,13 @@ export function Footer() {
 
             {/* Social Icons */}
             <div className="flex gap-4">
-              <a href="#" className="transition-colors" style={{ color: "#8b7765" }}>
+              <a href="#" className="transition-colors" style={{ color: "#FFFFFF" }}>
                 <Facebook size={18} />
               </a>
-              <a href="#" className="transition-colors" style={{ color: "#8b7765" }}>
+              <a href="#" className="transition-colors" style={{ color: "#FFFFFF" }}>
                 <Instagram size={18} />
               </a>
-              <a href="#" className="transition-colors" style={{ color: "#8b7765" }}>
+              <a href="#" className="transition-colors" style={{ color: "#FFFFFF" }}>
                 <Mail size={18} />
               </a>
             </div>

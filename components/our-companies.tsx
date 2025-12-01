@@ -16,7 +16,7 @@ const companies = [
   },
   {
     id: "oko",
-    name: "OKO",
+    name: "ÖKO",
     logo: "/images/oko.png",
   },
   {
@@ -36,7 +36,7 @@ export function OurCompanies() {
           {/* Title and Company Names - Centered */}
           <div className="text-center w-full">
             <h2
-              className="text-4xl md:text-5xl font-bold transition-all duration-500"
+              className="text-4xl md:text-5xl font-bold transition-all duration-1000"
               style={{
                 color: "#DCB485",
                 minHeight: "80px",
@@ -50,7 +50,7 @@ export function OurCompanies() {
             </h2>
           </div>
 
-          <div className="flex flex-wrap gap-8 md:gap-12 justify-center w-full">
+          <div className="flex flex-wrap gap-6 md:gap-10 justify-center w-full">
             {companies.map((company) => (
               <div
                 key={company.id}
