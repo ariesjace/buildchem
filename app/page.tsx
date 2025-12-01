@@ -1,25 +1,19 @@
-import Header from "@/components/header"
-import HeroSection from "@/components/hero-section"
-import AboutSection from "@/components/about-section"
-import ValuesSection from "@/components/values-section"
-import SolutionsSection from "@/components/solutions-section"
-import ProjectsSection from "@/components/projects-section"
-import BlogSection from "@/components/blog-section"
-import Footer from "@/components/footer"
+import { Navigation } from "@/components/navigation"
+import { Hero } from "@/components/hero"
+import { OurCompanies } from "@/components/our-companies"
+import { Solutions } from "@/components/solutions"
+import { WhatsNew } from "@/components/whats-new"
+import { Footer } from "@/components/footer"
 
 export default function Home() {
   return (
-    <>
-      <Header />
-      <main>
-        <HeroSection />
-        <AboutSection />
-        <ValuesSection />
-        <SolutionsSection />
-        <ProjectsSection />
-        <BlogSection />
-      </main>
+    <main className="min-h-screen" style={{ backgroundColor: "#261c12" }}>
+      <Navigation />
+      <Hero />
+      <OurCompanies />
+      <Solutions />
+      <WhatsNew />
       <Footer />
-    </>
+    </main>
   )
 }

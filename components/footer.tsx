@@ -1,85 +1,100 @@
 "use client"
 
 import Image from "next/image"
-import { Mail, Instagram, Facebook, Youtube } from "lucide-react"
+import { Mail, Facebook, Instagram } from "lucide-react"
 
-export default function Footer() {
+export function Footer() {
   return (
-    <footer className="bg-gradient-to-r from-gray-900 to-amber-900 text-white py-12 md:py-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-3 gap-12">
-          {/* Logo */}
+    <footer
+      className="border-t py-12 md:py-16 px-4 md:px-12"
+      style={{
+        background: "linear-gradient(180deg, #261c12 0%, #000000 100%)",
+        borderColor: "rgba(220, 180, 133, 0.2)",
+      }}
+    >
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-8 md:mb-12">
+          {/* Logo Column */}
           <div>
             <Image
-              src="/images/VAH-white.png"
-              alt="BUILDCHEM Logo"
-              width={150}
-              height={50}
-              className="h-12 w-auto mb-4"
+              src="/images/logo-footer.png"
+              alt="VALUE ACQUISITIONS HOLDINGS INC."
+              width={300}
+              height={120}
+              className="w-full h-auto mb-4 object-contain"
             />
           </div>
 
-          {/* Links */}
+          {/* Links Column */}
           <div>
-            <h3 className="font-semibold mb-4 text-lg">Quick Links</h3>
-            <ul className="space-y-3">
+            <h4 className="font-semibold mb-4 text-sm md:text-base" style={{ color: "#DCB485" }}>
+              Information
+            </h4>
+            <ul className="space-y-2 text-xs md:text-sm" style={{ color: "#8b7765" }}>
               <li>
-                <a href="#" className="hover:text-gray-100 transition">
+                <a href="#" className="hover:opacity-80 transition-opacity" style={{ color: "#DCB485" }}>
                   Frequently Asked Questions
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-gray-100 transition">
+                <a href="#" className="hover:opacity-80 transition-opacity" style={{ color: "#DCB485" }}>
                   Privacy Policy
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-gray-100 transition">
+                <a href="#" className="hover:opacity-80 transition-opacity" style={{ color: "#DCB485" }}>
                   Warranty Policy
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-gray-100 transition">
+                <a href="#" className="hover:opacity-80 transition-opacity" style={{ color: "#DCB485" }}>
                   Terms and Conditions
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-gray-100 transition">
+                <a href="#" className="hover:opacity-80 transition-opacity" style={{ color: "#DCB485" }}>
                   Careers
                 </a>
               </li>
             </ul>
           </div>
 
-          {/* Contact */}
-          <div>
-            <h3 className="font-semibold mb-4 text-lg">Connect With Us</h3>
-            <p className="mb-6 leading-relaxed text-sm">
-              Block 14, Brgy, Golden Mile <br />
-              Business Park, Lot 1 10TH <br />
-              Street, Maduya, Carmona, <br />
-              4116 Cavite
+          {/* Empty Column */}
+          <div></div>
+
+          {/* Contact Column */}
+          <div className="md:col-span-2 lg:col-span-1">
+            <h4 className="font-semibold mb-4 text-sm md:text-base" style={{ color: "#DCB485" }}>
+              Connect With Us
+            </h4>
+            <p className="text-xs md:text-sm mb-4 leading-relaxed" style={{ color: "#FFFFFF" }}>
+              Block 14, Brgy. Golden Mile Business Park, Lot 110TH Street, Maduya, Carmona, 4116 Cavite
             </p>
-            <p className="font-semibold mb-6">09175142168</p>
+            <p className="font-semibold mb-6 text-sm md:text-base" style={{ color: "#DCB485" }}>
+              09175142168
+            </p>
+
+            {/* Social Icons */}
             <div className="flex gap-4">
-              <a href="#" className="hover:text-gray-100 transition">
-                <Youtube className="w-6 h-6" />
+              <a href="#" className="transition-colors" style={{ color: "#8b7765" }}>
+                <Facebook size={18} />
               </a>
-              <a href="#" className="hover:text-gray-100 transition">
-                <Instagram className="w-6 h-6" />
+              <a href="#" className="transition-colors" style={{ color: "#8b7765" }}>
+                <Instagram size={18} />
               </a>
-              <a href="#" className="hover:text-gray-100 transition">
-                <Facebook className="w-6 h-6" />
-              </a>
-              <a href="#" className="hover:text-gray-100 transition">
-                <Mail className="w-6 h-6" />
+              <a href="#" className="transition-colors" style={{ color: "#8b7765" }}>
+                <Mail size={18} />
               </a>
             </div>
           </div>
         </div>
 
-        <div className="border-t border-white/20 mt-12 pt-8 text-center text-sm opacity-80">
-          <p>&copy; 2025 BUILDCHEM Solutions Inc. All rights reserved.</p>
+        {/* Divider - Updated border color to match theme */}
+        <div
+          className="border-t pt-6 md:pt-8 text-center text-xs md:text-sm"
+          style={{ borderColor: "rgba(220, 180, 133, 0.2)", color: "#FFFFFF" }}
+        >
+          <p>&copy; 2025 Value Acquisitions Holdings Inc. All rights reserved.</p>
         </div>
       </div>
     </footer>
