@@ -30,7 +30,7 @@ export function Navigation() {
       twoRows: true,
     },
     { label: "BLOGS", href: "#" },
-    { label: "CONTACT US", href: "#" },
+    { label: "CONTACT US", href: "/contact" },
   ]
 
   const [isMobileOpen, setIsMobileOpen] = useState(false)
