@@ -62,7 +62,7 @@ export function Navigation() {
           alt="VI Logo"
           width={40}
           height={40}
-          className="w-8 h-8 md:w-8 md:h-8 transition-transform duration-300 hover:scale-110 flex-shrink-0"
+          className="w-8 h-8 md:w-8 md:h-8 transition-transform duration-300 hover:scale-110 shrink-0"
         />
       </div>
 
@@ -138,7 +138,7 @@ export function Navigation() {
 
       {/* MOBILE TOGGLE */}
       <button
-        className="md:hidden flex-shrink-0 p-2"
+        className="md:hidden shrink-0 p-2"
         onClick={() => setIsMobileOpen(!isMobileOpen)}
         style={{ color: "#DCB485" }}
       >
@@ -165,7 +165,7 @@ export function Navigation() {
                       mobileExpandedDropdown === item.label ? null : item.label
                     )
                   }
-                  className="text-sm font-medium px-4 py-2 rounded transition-all duration-300 hover:opacity-80 block w-full text-left flex items-center justify-between"
+                  className="text-sm font-medium px-4 py-2 rounded transition-all duration-300 hover:opacity-80 block w-full text-left items-center justify-between"
                   style={{ color: "#DCB485" }}
                 >
                   {item.label}
@@ -190,7 +190,7 @@ export function Navigation() {
                     <a
                       key={subitem}
                       href="#"
-                      className="text-xs px-2 py-1 rounded transition-all duration-300 hover:opacity-80 block break-words"
+                      className="text-xs px-2 py-1 rounded transition-all duration-300 hover:opacity-80 block wrap-break-word"
                       style={{ color: "#DCB485", opacity: 0.8 }}
                     >
                       {subitem}

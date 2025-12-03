@@ -4,7 +4,7 @@ import { CompaniesHero } from "@/components/companies-hero"
 // import { AboutContent } from "@/components/about-content"
 
 export const metadata = {
-  title: "About Us | Value Acquisitions Holdings Inc.",
+  title: "Our Companies | Value Acquisitions Holdings Inc.",
   description:
     "Learn about Value Acquisitions Holdings Inc. and our portfolio of companies leading in construction, distribution, and industrial solutions.",
 }

@@ -30,7 +30,7 @@ export function OurCompanies() {
   const [hoveredCompany, setHoveredCompany] = useState<string | null>(null)
 
   return (
-    <section className="py-16 md:py-24 px-4 md:px-8" style={{ backgroundColor: "#261c12" }}>
+    <section className="py-16 md:py-40 px-4 md:px-8" style={{ backgroundColor: "#261c12" }}>
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col items-center justify-center gap-12">
           {/* Title and Company Names - Centered */}

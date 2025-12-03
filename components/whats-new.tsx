@@ -28,7 +28,7 @@ export function WhatsNew() {
           <h2 className="text-4xl md:text-5xl font-bold" style={{ color: "#DCB485" }}>
             What's New
           </h2>
-          <a href="#" className="transition-colors" style={{ color: "#DCB485" }}>
+          <a href="/blogs" className="transition-colors" style={{ color: "#DCB485" }}>
             Go to Blogs →
           </a>
         </div>

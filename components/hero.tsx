@@ -30,7 +30,7 @@ export function Hero() {
 
   return (
     <section
-      className="min-h-screen flex items-center pt-28 md:pt-32 px-3 md:px-12"
+      className="max-h-screen flex items-center pt-28 md:pt-70 px-3 md:px-12"
       style={{ backgroundColor: "#261c12" }}
     >
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-12 w-full">
