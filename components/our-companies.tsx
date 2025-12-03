@@ -2,27 +2,32 @@
 
 import { useState } from "react"
 import Image from "next/image"
+import Link from "next/link"
 
 const companies = [
   {
     id: "progdy",
     name: "Progressive Dynamics Inc.",
     logo: "/images/progdy.png",
+    href: "/companies/progdy",
   },
   {
     id: "buildchem",
     name: "Buildchem",
     logo: "/images/buildchem.png",
+    href: "/companies/buildchem",
   },
   {
     id: "oko",
     name: "ÖKO",
     logo: "/images/oko.png",
+    href: "/companies/oko",
   },
   {
     id: "progma",
     name: "Progressive Materials Inc.",
     logo: "/images/progma.png",
+    href: "/companies/progma",
   },
 ]
 
@@ -52,8 +57,9 @@ export function OurCompanies() {
 
           <div className="grid grid-cols-2 md:flex md:flex-wrap gap-4 md:gap-10 justify-center w-full">
             {companies.map((company) => (
-              <div
+              <Link
                 key={company.id}
+                href={company.href}
                 onMouseEnter={() => setHoveredCompany(company.id)}
                 onMouseLeave={() => setHoveredCompany(null)}
                 className="relative cursor-pointer transition-all duration-300"
@@ -87,7 +93,7 @@ export function OurCompanies() {
                     }}
                   />
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

@@ -1,12 +1,12 @@
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { CompaniesHero } from "@/components/companies-hero"
-// import { AboutContent } from "@/components/about-content"
+import { CompanyGrid } from "@/components/company-grid"
+import { companiesData } from "@/lib/companies-data"
 
 export const metadata = {
   title: "Our Companies | Value Acquisitions Holdings Inc.",
-  description:
-    "Learn about Value Acquisitions Holdings Inc. and our portfolio of companies leading in construction, distribution, and industrial solutions.",
+  description: "Explore our portfolio of companies leading in construction, distribution, and industrial solutions.",
 }
 
 export default function CompaniesPage() {
@@ -15,7 +15,7 @@ export default function CompaniesPage() {
       <Navigation />
       <main className="pt-24">
         <CompaniesHero />
-        {/* <AboutContent /> */}
+        <CompanyGrid companies={companiesData} />
       </main>
       <Footer />
     </div>

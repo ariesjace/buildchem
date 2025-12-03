@@ -28,32 +28,37 @@ export function Footer() {
           {/* Links Column */}
           <div>
             <h4 className="font-semibold mb-4 text-sm md:text-base" style={{ color: "#DCB485" }}>
-              INFORMATION
+              QUCIK LINKS
             </h4>
             <ul className="space-y-2 text-xs md:text-sm" style={{ color: "#8b7765" }}>
               <li>
-                <a href="#" className="hover:opacity-80 transition-opacity" style={{ color: "#FFFFFF" }}>
-                  Frequently Asked Questions
+                <a href="/home" className="hover:opacity-80 transition-opacity" style={{ color: "#FFFFFF" }}>
+                  Home
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:opacity-80 transition-opacity" style={{ color: "#FFFFFF" }}>
-                  Privacy Policy
+                <a href="/about" className="hover:opacity-80 transition-opacity" style={{ color: "#FFFFFF" }}>
+                  About Us
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:opacity-80 transition-opacity" style={{ color: "#FFFFFF" }}>
-                  Warranty Policy
+                <a href="/companies" className="hover:opacity-80 transition-opacity" style={{ color: "#FFFFFF" }}>
+                  Companies
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:opacity-80 transition-opacity" style={{ color: "#FFFFFF" }}>
-                  Terms and Conditions
+                <a href="/solutions" className="hover:opacity-80 transition-opacity" style={{ color: "#FFFFFF" }}>
+                  Solutions
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:opacity-80 transition-opacity" style={{ color: "#FFFFFF" }}>
-                  Careers
+                <a href="/blogs" className="hover:opacity-80 transition-opacity" style={{ color: "#FFFFFF" }}>
+                  Blogs
+                </a>
+              </li>
+              <li>
+                <a href="/contact" className="hover:opacity-80 transition-opacity" style={{ color: "#FFFFFF" }}>
+                  Contact Us
                 </a>
               </li>
             </ul>
