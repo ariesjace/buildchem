@@ -89,47 +89,59 @@ export function Footer() {
           </div>
 
           {/* Our Companies Column */}
-          <div>
-            <h4 className="font-bold mb-5 text-base tracking-wide" style={{ color: "#DCB485" }}>
+          <div className="flex flex-col items-center lg:items-start">
+            <h4 className="font-bold mb-5 text-base tracking-wide text-center lg:text-left" style={{ color: "#DCB485" }}>
               OUR COMPANIES
             </h4>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="p-3 rounded-md hover:opacity-80 transition-opacity duration-300 flex items-center justify-center">
+            <div className="grid grid-cols-2 gap-4 w-full max-w-[280px]">
+              <a 
+                href="/companies/buildchem" 
+                className="p-3 rounded-md hover:opacity-80 transition-opacity duration-300 flex items-center justify-center min-h-[70px]"
+              >
                 <Image
                   src="/images/buildchem.png"
                   alt="Buildschem Solutions Inc."
                   width={100}
-                  height={35}
-                  className="w-full h-auto object-contain"
+                  height={40}
+                  className="w-full h-auto object-contain max-h-[45px]"
                 />
-              </div>
-              <div className="p-3 rounded-md hover:opacity-80 transition-opacity duration-300 flex items-center justify-center">
+              </a>
+              <a 
+                href="/companies/oko" 
+                className="p-3 rounded-md hover:opacity-80 transition-opacity duration-300 flex items-center justify-center min-h-[70px]"
+              >
                 <Image
                   src="/images/oko.png"
                   alt="Öko"
                   width={100}
-                  height={35}
-                  className="w-full h-auto object-contain"
+                  height={40}
+                  className="w-full h-auto object-contain max-h-[45px]"
                 />
-              </div>
-              <div className="p-3 rounded-md hover:opacity-80 transition-opacity duration-300 flex items-center justify-center">
+              </a>
+              <a 
+                href="/companies/progdy" 
+                className="p-3 rounded-md hover:opacity-80 transition-opacity duration-300 flex items-center justify-center min-h-[70px]"
+              >
                 <Image
                   src="/images/progdy.png"
                   alt="Progressive Dynamics Inc."
                   width={100}
-                  height={35}
-                  className="w-full h-auto object-contain"
+                  height={40}
+                  className="w-full h-auto object-contain max-h-[45px]"
                 />
-              </div>
-              <div className="p-3 rounded-md hover:opacity-80 transition-opacity duration-300 flex items-center justify-center">
+              </a>
+              <a 
+                href="#/companies/progma" 
+                className="p-3 rounded-md hover:opacity-80 transition-opacity duration-300 flex items-center justify-center min-h-[70px]"
+              >
                 <Image
                   src="/images/progma.png"
                   alt="Progressive Materials Solutions Inc."
                   width={100}
-                  height={35}
-                  className="w-full h-auto object-contain"
+                  height={40}
+                  className="w-full h-auto object-contain max-h-[45px]"
                 />
-              </div>
+              </a>
             </div>
           </div>
 
