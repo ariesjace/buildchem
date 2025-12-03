@@ -106,7 +106,7 @@ export default async function CompanyPage({ params }: { params: Promise<{ id: st
                     }}
                   >
                     <p className="text-base md:text-lg" style={{ color: "#DCB485" }}>
-                      ✓ {highlight}
+                      {highlight}
                     </p>
                   </div>
                 ))}
