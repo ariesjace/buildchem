@@ -1,6 +1,7 @@
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import { SolutionsHero } from "@/components/solutions-hero";
+import { SolutionsContent } from "@/components/solutions-content";
 
 export const metadata = {
   title: "Solutions | Value Acquisitions Holdings Inc.",
@@ -10,10 +11,11 @@ export const metadata = {
 
 export default function SolutionsPage() {
   return (
-    <div className="min-h-screen" style={{ backgroundColor: "#261c12" }}>
+    <div className="min-h-screen bg-white">
       <Navigation />
-      <main className="pt-24">
+      <main className="pt-24 bg-white">
         <SolutionsHero />
+        <SolutionsContent />
       </main>
       <Footer />
     </div>
