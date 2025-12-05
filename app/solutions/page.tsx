@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import { SolutionsHero } from "@/components/solutions-hero";
@@ -15,7 +16,9 @@ export default function SolutionsPage() {
       <Navigation />
       <main className="pt-24" style={{ backgroundColor: "#004AAD" }}>
         <SolutionsHero />
-        <SolutionsContent />
+        <Suspense fallback={<div>Loading solutions...</div>}>
+      <SolutionsContent />
+    </Suspense>
       </main>
       <Footer />
     </div>
