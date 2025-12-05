@@ -18,6 +18,7 @@ interface Product {
 }
 
 interface SolutionsGridProps {
+  id?: string; // new
   title: string;
   description: string;
   products: Product[];
@@ -25,25 +26,18 @@ interface SolutionsGridProps {
   index: number;
 }
 
-const SolutionsGrid = ({
-  title,
-  description,
-  products,
-  reverse,
-  index,
-}: SolutionsGridProps) => {
+const SolutionsGrid = ({ id, title, description, products, reverse, index }: SolutionsGridProps) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
 
   return (
     <motion.div
+      id={id} // move the id here
       ref={ref}
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay: 0.1 }}
-      className={`grid md:grid-cols-2 gap-8 lg:gap-16 items-center ${
-        reverse ? "md:flex-row-reverse" : ""
-      }`}
+      className={`grid md:grid-cols-2 gap-8 lg:gap-16 items-center ${reverse ? "md:flex-row-reverse" : ""}`}
     >
       {/* LEFT SIDE */}
       <div className={`${reverse ? "md:order-2" : ""}`}>

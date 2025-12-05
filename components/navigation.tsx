@@ -3,15 +3,21 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
-import { usePathname, useSearchParams, useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { ChevronDown } from "lucide-react";
+
+interface NavItem {
+  label: string;
+  href: string;
+  dropdown?: { label: string; href?: string; index?: number }[];
+}
 
 export function Navigation() {
   const pathname = usePathname();
   const router = useRouter();
-  const isOnSolutions = pathname.startsWith("/solutions");
+  const isOnSolutions = pathname === "/solutions";
 
-  const navItems = [
+  const navItems: NavItem[] = [
     { label: "HOME", href: "/home" },
     { label: "ABOUT US", href: "/about" },
     {
@@ -28,18 +34,17 @@ export function Navigation() {
       label: "SOLUTIONS",
       href: "/solutions",
       dropdown: [
-        { label: "Superplasticizers & High-Range Water Reducers", scrollTo: "1" },
-        { label: "Set Retarders & Accelerators", scrollTo: "2" },
-        { label: "Underwater Concrete Solutions", scrollTo: "3" },
-        { label: "Waterproofing Solutions", scrollTo: "4" },
-        { label: "Soil Stabilization & Road Foundation Solutions", scrollTo: "5" },
-        { label: "Mould Release Agents", scrollTo: "6" },
-        { label: "Corrosion Protection Solutions", scrollTo: "7" },
-        { label: "Curing Compounds", scrollTo: "8" },
-        { label: "Cement Processing & Grinding Aids", scrollTo: "9" },
-        { label: "Cleaning & Surface Preparation Chemicals", scrollTo: "10" },
+        { label: "Superplasticizers & High-Range Water Reducers", index: 1 },
+        { label: "Set Retarders & Accelerators", index: 2 },
+        { label: "Underwater Concrete Solutions", index: 3 },
+        { label: "Waterproofing Solutions", index: 4 },
+        { label: "Soil Stabilization & Road Foundation Solutions", index: 5 },
+        { label: "Mould Release Agents", index: 6 },
+        { label: "Corrosion Protection Solutions", index: 7 },
+        { label: "Curing Compounds", index: 8 },
+        { label: "Cement Processing & Grinding Aids", index: 9 },
+        { label: "Cleaning & Surface Preparation Chemicals", index: 10 },
       ],
-      twoRows: true,
     },
     { label: "BLOGS", href: "/blogs" },
     { label: "CONTACT US", href: "/contact" },
@@ -56,25 +61,9 @@ export function Navigation() {
         setOpenDropdown(null);
       }
     }
-
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
-
-  const scrollToSolution = (id: string) => {
-    const element = document.getElementById(`solution-${id}`);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  };
-
-  const handleLinkClick = (href: string, scrollTo?: string) => {
-    if (isOnSolutions && scrollTo) {
-      scrollToSolution(scrollTo);
-    } else if (href) {
-      router.push(href);
-    }
-  };
 
   const navBg = isOnSolutions
     ? "linear-gradient(180deg, #5DE0E6 0%, #004AAD 100%)"
@@ -82,6 +71,19 @@ export function Navigation() {
 
   const textColor = isOnSolutions ? "#ffffff" : "#DCB485";
   const logoSrc = isOnSolutions ? "/images/vah-white-small.png" : "/images/logo-vah.png";
+
+  const handleSolutionClick = (index: number) => {
+    if (pathname === "/solutions") {
+      const element = document.getElementById(`solution-${index}`);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    } else {
+      router.push(`/solutions?scrollTo=${index}`);
+    }
+    setOpenDropdown(null);
+    setIsMobileOpen(false);
+  };
 
   return (
     <nav
@@ -113,54 +115,69 @@ export function Navigation() {
         >
           {navItems.map((item) => (
             <div key={item.label} className="relative flex items-center gap-1">
-              <button
-                onClick={() => handleLinkClick(item.href, (item as any).scrollTo)}
+              {/* TEXT LINK */}
+              <Link
+               href={item.href}
                 className="text-sm font-medium transition-all duration-300 whitespace-nowrap hover:opacity-80"
                 style={{ color: textColor }}
               >
                 {item.label}
-              </button>
+              </Link>
 
+              {/* CHEVRON */}
               {item.dropdown && (
-                <>
-                  <button
-                    onClick={() => setOpenDropdown(openDropdown === item.label ? null : item.label)}
-                    className="flex items-center"
-                    style={{ color: textColor }}
-                  >
-                    <ChevronDown
-                      className={`w-4 h-4 transition-transform duration-300 ${
-                        openDropdown === item.label ? "rotate-180" : ""
-                      }`}
-                    />
-                  </button>
+                <button
+                  onClick={() =>
+                    setOpenDropdown(openDropdown === item.label ? null : item.label)
+                  }
+                  className="flex items-center"
+                  style={{ color: textColor }}
+                >
+                  <ChevronDown
+                    className={`w-4 h-4 transition-transform duration-300 ${
+                      openDropdown === item.label ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+              )}
 
-                  <div
-                    className={`absolute top-full left-1/2 transform -translate-x-1/2 mt-2 rounded-lg border border-amber-600/30 backdrop-blur-xl shadow-lg p-4 min-w-max ${
-                      (item as any).twoRows ? "grid grid-cols-2 gap-2" : "flex flex-col gap-2"
-                    } ${
+              {/* DROPDOWN */}
+              {item.dropdown && (
+                <div
+                  className={`absolute top-full left-1/2 transform -translate-x-1/2 mt-2 rounded-lg border border-amber-600/30 backdrop-blur-xl shadow-lg p-4 min-w-max z-50 flex flex-col gap-2
+                    ${
                       openDropdown === item.label
                         ? "opacity-100 visible pointer-events-auto"
                         : "opacity-0 invisible pointer-events-none"
-                    } transition-all duration-200`}
-                    style={{
-                      background: "linear-gradient(135deg, rgba(26, 20, 16, 0.95) 0%, rgba(18, 14, 10, 0.9) 100%)",
-                    }}
-                  >
-                    {(item.dropdown as any[]).map((subitem) => (
+                    }
+                    transition-all duration-200`}
+                  style={{
+                    background:
+                      "linear-gradient(135deg, rgba(26, 20, 16, 0.95) 0%, rgba(18, 14, 10, 0.9) 100%)",
+                  }}
+                >
+                  {item.dropdown.map((subitem: any) =>
+                    item.label === "SOLUTIONS" && subitem.index ? (
                       <button
-                        key={subitem.label}
-                        onClick={() =>
-                          handleLinkClick("/solutions", subitem.scrollTo)
-                        }
-                        className="text-sm px-3 py-2 rounded transition-all duration-200 hover:opacity-80 whitespace-nowrap text-left"
+                        key={subitem.index}
+                        onClick={() => handleSolutionClick(subitem.index)}
+                        className="text-sm px-3 py-2 rounded transition-all duration-200 hover:opacity-80 whitespace-nowrap text-left w-full"
                         style={{ color: textColor }}
                       >
                         {subitem.label}
                       </button>
-                    ))}
-                  </div>
-                </>
+                    ) : (
+                      <Link
+                        key={subitem.label}
+                        href={subitem.href!}
+                        className="text-sm px-3 py-2 rounded transition-all duration-200 hover:opacity-80 whitespace-nowrap block"
+                        style={{ color: textColor }}
+                      >
+                        {subitem.label}
+                      </Link>
+                    )
+                  )}
+                </div>
               )}
             </div>
           ))}
@@ -192,7 +209,9 @@ export function Navigation() {
               {item.dropdown ? (
                 <button
                   onClick={() =>
-                    setMobileExpandedDropdown(mobileExpandedDropdown === item.label ? null : item.label)
+                    setMobileExpandedDropdown(
+                      mobileExpandedDropdown === item.label ? null : item.label
+                    )
                   }
                   className="text-sm font-medium px-4 py-2 rounded transition-all duration-300 hover:opacity-80 w-full text-left flex items-center justify-between"
                   style={{ color: textColor }}
@@ -205,27 +224,38 @@ export function Navigation() {
                   />
                 </button>
               ) : (
-                <button
-                  onClick={() => handleLinkClick(item.href)}
+                <Link
+                  href={item.href}
                   className="text-sm font-medium px-4 py-2 rounded transition-all duration-300 hover:opacity-80 block w-full text-left"
                   style={{ color: textColor }}
                 >
                   {item.label}
-                </button>
+                </Link>
               )}
 
               {item.dropdown && mobileExpandedDropdown === item.label && (
                 <div className="pl-4 flex flex-col gap-1 max-h-48 overflow-y-auto mobile-scroll-hide">
-                  {(item.dropdown as any[]).map((subitem) => (
-                    <button
-                      key={subitem.label}
-                      onClick={() => handleLinkClick("/solutions", subitem.scrollTo)}
-                      className="text-xs px-2 py-1 rounded transition-all duration-300 hover:opacity-80 block wrap-break-word text-left"
-                      style={{ color: textColor, opacity: 0.8 }}
-                    >
-                      {subitem.label}
-                    </button>
-                  ))}
+                  {item.dropdown.map((subitem: any) =>
+                    item.label === "SOLUTIONS" && subitem.index ? (
+                      <button
+                        key={subitem.index}
+                        onClick={() => handleSolutionClick(subitem.index)}
+                        className="text-xs px-2 py-1 rounded transition-all duration-300 hover:opacity-80 block text-left"
+                        style={{ color: textColor, opacity: 0.8 }}
+                      >
+                        {subitem.label}
+                      </button>
+                    ) : (
+                      <Link
+                        key={subitem.label}
+                        href={subitem.href!}
+                        className="text-xs px-2 py-1 rounded transition-all duration-300 hover:opacity-80 block"
+                        style={{ color: textColor, opacity: 0.8 }}
+                      >
+                        {subitem.label}
+                      </Link>
+                    )
+                  )}
                 </div>
               )}
             </div>

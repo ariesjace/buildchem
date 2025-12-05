@@ -1,27 +1,28 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, usePathname } from "next/navigation";
 import { useEffect, useRef } from "react";
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import SolutionsGrid from "@/components/solutions-grid";
 
 export const SolutionsContent = () => {
   const ref = useRef<HTMLDivElement | null>(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
 
-  // Use search params to scroll to a specific index (if provided)
   const searchParams = useSearchParams();
-  const targetIndex = searchParams?.get("scrollTo"); // e.g., ?scrollTo=3
+  const pathname = usePathname();
+  const targetIndex = searchParams?.get("scrollTo");
 
   useEffect(() => {
-    if (targetIndex && ref.current) {
+    if (targetIndex && pathname === "/solutions") {
       const element = document.getElementById(`solution-${targetIndex}`);
       if (element) {
-        element.scrollIntoView({ behavior: "smooth", block: "start" });
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 50);
       }
     }
-  }, [targetIndex]);
+  }, [targetIndex, pathname]);
 
   const solutionsData = [
     {
@@ -120,7 +121,6 @@ export const SolutionsContent = () => {
   return (
     <section id="products" className="py-20 md:py-28 bg-white" ref={ref}>
       <div className="container mx-auto px-4 lg:px-8">
-        {/* TOP INTRO SECTION */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -132,11 +132,11 @@ export const SolutionsContent = () => {
           </h2>
         </motion.div>
 
-        {/* GRID SECTIONS */}
         <div className="space-y-16 md:space-y-24">
           {solutionsData.map((sol) => (
             <div key={sol.index} id={`solution-${sol.index}`}>
               <SolutionsGrid
+                id={`solution-${sol.index}`} // add this prop
                 index={sol.index}
                 title={sol.title}
                 description={sol.description}
