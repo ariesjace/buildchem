@@ -12,9 +12,9 @@ export const metadata = {
 
 export default function SolutionsPage() {
   return (
-    <div className="min-h-screen" style={{ backgroundColor: "#004AAD" }}>
+    <div className="min-h-screen" style={{ backgroundColor: "#FFFFFF" }}>
       <Navigation />
-      <main className="pt-24" style={{ backgroundColor: "#004AAD" }}>
+      <main className="pt-24" style={{ backgroundColor: "#FFFFFF" }}>
         <SolutionsHero />
         <Suspense fallback={<div>Loading solutions...</div>}>
       <SolutionsContent />
