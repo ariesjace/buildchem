@@ -11,9 +11,9 @@ export const metadata = {
 
 export default function SolutionsPage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen" style={{ backgroundColor: "#004AAD" }}>
       <Navigation />
-      <main className="pt-24 bg-white">
+      <main className="pt-24" style={{ backgroundColor: "#004AAD" }}>
         <SolutionsHero />
         <SolutionsContent />
       </main>

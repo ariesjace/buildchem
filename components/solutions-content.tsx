@@ -15,34 +15,7 @@ export const SolutionsContent = () => {
       <div className="container mx-auto px-4 lg:px-8">
         
         {/* TOP INTRO SECTION */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-center max-w-4xl mx-auto mb-16"
-        >
-          <Image
-            src="/images/buildchem.png"
-            alt="BuildChem Logo"
-            width={180}
-            height={60}
-            className="mx-auto mb-4 object-contain"
-            priority
-          />
-
-          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
-            Advanced Concrete Solutions
-          </h2>
-
-          <p className="text-lg text-gray-600 leading-relaxed mb-4">
-            BuildChem Solutions Inc., a subsidiary under Progressive Materials
-            Solutions Inc., delivers high-performance chemical admixtures for concrete and
-            soil stabilization. Our products optimize workability, strength,
-            durability, and water resistance for ready-mix, precast, underwater,
-            or road foundation applications.
-          </p>
-        </motion.div>
-
+      
         {/* OUR PRODUCTS HEADER */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -60,7 +33,7 @@ export const SolutionsContent = () => {
           <SolutionsGrid
             index={1}
             title="Superplasticizers & High-Range Water Reducers"
-            description="Enhance concrete flow, reduce water-cement ratio, and achieve superior strength with our HP, PC, and SI series."
+            description="Enhance concrete flow, reduce water-cement ratio, and achieve superior strength with our HP, PC, and SI series. Perfect for ready-mix, precast, high-performance, and fiber-reinforced concrete."
             products={[
               { category: "BUILDCHEM HP Series", items: ["HP 1000", "HP 515"] },
               {
@@ -74,10 +47,10 @@ export const SolutionsContent = () => {
           <SolutionsGrid
             index={2}
             title="Set Retarders & Accelerators"
-            description="Control setting times and ensure optimal workability with our retarder and accelerator products."
+            description="Control setting times, improve workability, and ensure high early strength with our retarder and accelerator products. Perfect for remote job sites, high traffic areas, and temperature-sensitive applications."
             products={[
-              { category: "BUILDCHEM Retarders", items: ["RETARDER", "STABLE"] },
-              { category: "BUILDCHEM SET Series", items: ["SET 100", "SET 500", "SET 500P"] },
+              { category: "BUILDCHEM Retarders", items: ["BUILDCHEM RETARDER", "BUILDCHEM STABLE"] },
+              { category: "BUILDCHEM SET Series", items: ["BUILDCHEM SET 100", "BUILDCHEM SET 500", "BUILDCHEM SET 500P"] },
             ]}
             reverse
           />
@@ -85,18 +58,18 @@ export const SolutionsContent = () => {
           <SolutionsGrid
             index={3}
             title="Underwater Concrete Solutions"
-            description="Specialized formulations for underwater concrete applications."
+            description="Maintain concrete integrity in extreme underwater conditions with our UW series. Prevent washout while preserving workability, pumpability, and placement."
             products={[
-              { category: "BUILDCHEM UW Series", items: ["BUILDCHEM UW", "BUILDCHEM UW50"] },
+              { category: "BUILDCHEM UW Series", items: ["BUILDCHEM UW", "BUILDCHEM UW50", "BUILDCHEM BP ENERGY-100"] },
             ]}
           />
 
           <SolutionsGrid
             index={4}
             title="Waterproofing Solutions"
-            description="Comprehensive waterproofing systems that protect concrete structures."
+            description="Chloride-free waterproofing products to prevent water ingress, enhance durability, and strengthen concrete surfaces."
             products={[
-              { category: "BUILDCHEM WP Series", items: ["WP 10L", "WP 20"] },
+              { category: "BUILDCHEM WP Series", items: ["BUILDCHEM WP®10L", "BUILDCHEM WP®20", "BUILDCHEM SBX 100"] },
             ]}
             reverse
           />
@@ -104,11 +77,60 @@ export const SolutionsContent = () => {
           <SolutionsGrid
             index={5}
             title="Soil Stabilization & Road Foundation"
-            description="Solutions that improve load-bearing capacity and ground durability."
+            description="Strengthen soil and road foundations using polymer-based stabilization technology. Achieve higher durability, load capacity, and resistance to water and erosion."
             products={[
-              { category: "BUILDCHEM SSTAB Series", items: ["SSTAB-1000", "SSTAB-2000"] },
+              { category: "BUILDCHEM SSTAB Series", items: ["BUILDCHEM SSTAB-1000", "BUILDCHEM SSTAB-2000"] },
             ]}
           />
+
+          <SolutionsGrid
+            index={6}
+            title="Mould Release Agents"
+            description="Chemicals applied to formwork surfaces to prevent fresh concrete from sticking, ensuring smooth, defect-free finishes and reducing cleaning time for molds."
+            products={[
+              { category: "BUILDCHEM FORM Series", items: ["BUILDCHEM DE-BONDING AGENT", "BUILDCHEM FORM MRA", "BUILDCHEM FORM WB10", "BUILDCHEM FORM WB"] },
+            ]}
+            reverse
+          />
+
+          <SolutionsGrid
+            index={7}
+            title="Corrosion Protection Solutions"
+            description="Admixtures formulated to protect reinforcing steel from chloride attack and deterioration, extending the structural lifespan of concrete exposed to harsh environments."
+            products={[
+              { category: "BUILDCHEM CI Series", items: ["BUILDCHEM®CI 1000", "BUILDCHEM®CNI 500"] },
+            ]}
+          />
+
+            <SolutionsGrid
+            index={8}
+            title="Curing Compounds"
+            description="Moisture-retaining coatings designed to control water loss in fresh concrete, promoting proper hydration, reducing cracking, and improving long-term strength."
+            products={[
+              { category: "BUILDCHEM CURE Series", items: ["BUILDCHEM®CURE 100", "BUILDCHEM®CURE 150"] },
+            ]}
+            reverse
+          />
+
+          <SolutionsGrid
+            index={9}
+            title="Cement Processing & Grinding Aids"
+            description="Additives used during cement production to improve milling efficiency, prevent agglomeration, and enhance early and final strength development."
+            products={[
+              { category: "BUILDCHEM CEM Series", items: ["BUILDCHEM®CEM 100"] },
+            ]}
+          />
+
+            <SolutionsGrid
+            index={10}
+            title="Cleaning & Surface Preparation Chemicals"
+            description="Specialized cleaners engineered to remove cement residue, efflorescence, and contaminants, preparing surfaces for coatings, repairs, or finishing."
+            products={[
+              { category: "BUILDCHEM ECO Series", items: ["BUILDCHEM ECO CR"] },
+            ]}
+            reverse
+          />
+
         </div>
       </div>
     </section>

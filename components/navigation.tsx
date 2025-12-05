@@ -3,9 +3,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
+import { usePathname } from "next/navigation"
 import { ChevronDown } from "lucide-react";
 
 export function Navigation() {
+  const pathname = usePathname()
+  const isOnSolutions = pathname === "/solutions"
+
   const navItems = [
     { label: "HOME", href: "/home" },
     { label: "ABOUT US", href: "/about" },
@@ -60,21 +64,28 @@ export function Navigation() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+     const navBg = isOnSolutions
+    ? "linear-gradient(180deg, #5DE0E6 0%, #004AAD 100%)"
+    : "linear-gradient(180deg, #000000 0%, #261c12 100%)"
+
+    const textColor = isOnSolutions ? "#ffffff" : "#DCB485"
+    const logoSrc = isOnSolutions ? "/images/vah-white-small.png" : "/images/logo-vah.png"
+
   return (
     <nav
-      className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 md:px-8 py-4 md:py-6"
+      className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 md:px-8 py-4 md:py-6 transition-all duration-300"
       style={{
-        background: "linear-gradient(180deg, #000000 0%, #261c12 100%)",
+        background: navBg,
       }}
     >
       <div className="flex items-center">
         <Link href="/home" className="flex items-center">
   <Image
-    src="/images/logo-vah.png"
+    src={logoSrc || "/placeholder.svg"}
     alt="VI Logo"
     width={40}
     height={40}
-    className="w-8 h-8 transition-transform duration-300 hover:scale-110"
+    className="w-8 h-8 md:w-8 md:h-8 transition-all duration-300 hover:scale-110 shrink-0"
   />
 </Link>
       </div>
@@ -85,10 +96,12 @@ export function Navigation() {
         ref={desktopMenuRef}
       >
         <div
-          className="flex items-center justify-center gap-6 px-8 py-3 rounded-full backdrop-blur-xl border border-amber-600/30 shadow-lg relative"
+           className="flex items-center justify-center gap-6 px-8 py-3 rounded-full backdrop-blur-xl border shadow-lg relative transition-all duration-300"
           style={{
-            background:
-              "linear-gradient(135deg, rgba(26, 20, 16, 0.9) 0%, rgba(18, 14, 10, 0.85) 100%)",
+            background: isOnSolutions
+              ? "rgba(255, 255, 255, 0.15)"
+              : "linear-gradient(135deg, rgba(26, 20, 16, 0.9) 0%, rgba(18, 14, 10, 0.85) 100%)",
+            borderColor: isOnSolutions ? "rgba(255, 255, 255, 0.3)" : "rgba(220, 180, 133, 0.3)",
           }}
         >
           {navItems.map((item) => (
@@ -97,7 +110,7 @@ export function Navigation() {
               <a
                 href={item.href}
                 className="text-sm font-medium transition-all duration-300 whitespace-nowrap hover:opacity-80"
-                style={{ color: "#DCB485" }}
+                style={{ color: textColor }}
               >
                 {item.label}
               </a>
@@ -111,7 +124,7 @@ export function Navigation() {
                     )
                   }
                   className="flex items-center"
-                  style={{ color: "#DCB485" }} // added color style to make chevron visible
+                  style={{ color: textColor }} // added color style to make chevron visible
                 >
                   <ChevronDown
                     className={`w-4 h-4 transition-transform duration-300 ${
@@ -149,7 +162,7 @@ export function Navigation() {
                       }
                       href={typeof subitem === "string" ? "#" : subitem.href}
                       className="text-sm px-3 py-2 rounded transition-all duration-200 hover:opacity-80 whitespace-nowrap"
-                      style={{ color: "#DCB485" }}
+                     style={{ color: textColor }}
                     >
                       {typeof subitem === "string" ? subitem : subitem.label}
                     </a>
@@ -163,9 +176,9 @@ export function Navigation() {
 
       {/* MOBILE TOGGLE */}
       <button
-        className="md:hidden shrink-0 p-2"
+        className="md:hidden shrink-0 p-2 transition-colors duration-300"
         onClick={() => setIsMobileOpen(!isMobileOpen)}
-        style={{ color: "#DCB485" }}
+        style={{ color: textColor }}
       >
         <svg
           className="w-5 h-5"
@@ -185,9 +198,10 @@ export function Navigation() {
       {/* MOBILE MENU */}
       {isMobileOpen && (
         <div
-          className="md:hidden absolute top-full left-0 right-0 mt-2 mx-2 flex flex-col gap-2 pb-4 rounded-lg border border-amber-600/30 p-4 max-h-96 overflow-y-auto mobile-scroll-hide"
+          className="md:hidden absolute top-full left-0 right-0 mt-2 mx-2 flex flex-col gap-2 pb-4 rounded-lg border p-4 max-h-96 overflow-y-auto mobile-scroll-hide transition-all duration-300"
           style={{
-            backgroundColor: "#1a1410", // Made background solid dark instead of transparent gradient
+            backgroundColor: isOnSolutions ? "rgba(5, 74, 173, 0.95)" : "#1a1410",
+            borderColor: isOnSolutions ? "rgba(255, 255, 255, 0.3)" : "rgba(220, 180, 133, 0.3)", // Made background solid dark instead of transparent gradient
           }}
         >
           {navItems.map((item) => (
@@ -200,7 +214,7 @@ export function Navigation() {
                     )
                   }
                   className="text-sm font-medium px-4 py-2 rounded transition-all duration-300 hover:opacity-80 w-full text-left flex items-center justify-between"
-                  style={{ color: "#DCB485" }}
+                  style={{ color: textColor }}
                 >
                   {item.label}
                   <ChevronDown
@@ -213,7 +227,7 @@ export function Navigation() {
                 <a
                   href={item.href}
                   className="text-sm font-medium px-4 py-2 rounded transition-all duration-300 hover:opacity-80 block w-full text-left"
-                  style={{ color: "#DCB485" }}
+                  style={{ color: textColor }}
                 >
                   {item.label}
                 </a>
@@ -227,7 +241,7 @@ export function Navigation() {
                       }
                       href={typeof subitem === "string" ? "#" : subitem.href}
                       className="text-xs px-2 py-1 rounded transition-all duration-300 hover:opacity-80 block wrap-break-word"
-                      style={{ color: "#DCB485", opacity: 0.8 }}
+                      style={{ color: textColor, opacity: 0.8 }}
                     >
                       {typeof subitem === "string" ? subitem : subitem.label}
                     </a>
