@@ -26,7 +26,14 @@ interface SolutionsGridProps {
   index: number;
 }
 
-const SolutionsGrid = ({ id, title, description, products, reverse, index }: SolutionsGridProps) => {
+const SolutionsGrid = ({
+  id,
+  title,
+  description,
+  products,
+  reverse,
+  index,
+}: SolutionsGridProps) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
 
@@ -37,7 +44,9 @@ const SolutionsGrid = ({ id, title, description, products, reverse, index }: Sol
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay: 0.1 }}
-      className={`grid md:grid-cols-2 gap-8 lg:gap-16 items-center ${reverse ? "md:flex-row-reverse" : ""}`}
+      className={`grid md:grid-cols-2 gap-8 lg:gap-16 items-center ${
+        reverse ? "md:flex-row-reverse" : ""
+      }`}
     >
       {/* LEFT SIDE */}
       <div className={`${reverse ? "md:order-2" : ""}`}>
@@ -75,51 +84,55 @@ const SolutionsGrid = ({ id, title, description, products, reverse, index }: Sol
 
           <Accordion type="single" defaultValue="item-0">
             {products.map((product, idx) => {
-              const value = `item-${idx}`; // ✅ define value here
+              const value = `item-${idx}`;
               return (
-                <AccordionItem
-                  key={idx}
-                  value={value} // must pass value here
-                  className="
-                    border border-gray-300 
-                    rounded-xl 
-                    px-4 
-                    bg-white
-                    hover:bg-blue-50
-                    transition-all duration-200
-                  "
-                >
-                  {/* Trigger */}
-                  <AccordionTrigger value={value} className="text-[#0A0A0A] font-semibold hover:no-underline py-4">
-                    <span className="flex items-center">
-                      <ChevronRight className="w-4 h-4 mr-2 text-blue-600" />
-                      {product.category}
-                    </span>
-                  </AccordionTrigger>
+                <div key={idx} className="mb-4">
+                  {" "}
+                  {/* <-- spacing between items */}
+                  <AccordionItem
+                    value={value}
+                    className="
+            border border-gray-300
+            rounded-xl
+            px-4
+            bg-white
+            hover:bg-blue-50
+            transition-all duration-200
+          "
+                  >
+                    <AccordionTrigger
+                      value={value}
+                      className="text-[#0A0A0A] font-semibold hover:no-underline py-4"
+                    >
+                      <span className="flex items-center">
+                        <ChevronRight className="w-4 h-4 mr-2 text-blue-600" />
+                        {product.category}
+                      </span>
+                    </AccordionTrigger>
 
-                  {/* CONTENT */}
-                  <AccordionContent value={value} className="pb-4">
-                    <div className="grid grid-cols-2 gap-2 pt-1">
-                      {product.items.map((item, i) => (
-                        <div
-                          key={i}
-                          className="
-                            flex items-center 
-                            text-sm 
-                            text-gray-700 
-                            bg-white 
-                            rounded-lg 
-                            px-3 py-2 
-                            border border-gray-200
-                          "
-                        >
-                          <span className="w-1.5 h-1.5 bg-blue-400 rounded-full mr-2" />
-                          <span>{item}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </AccordionContent>
-                </AccordionItem>
+                    <AccordionContent value={value} className="pb-4">
+                      <div className="grid grid-cols-2 gap-3 pt-1">
+                        {product.items.map((item, i) => (
+                          <div
+                            key={i}
+                            className="
+                    flex items-center 
+                    text-sm 
+                    text-gray-700 
+                    bg-white 
+                    rounded-lg 
+                    px-3 py-2 
+                    border border-gray-200
+                  "
+                          >
+                            <span className="w-1.5 h-1.5 bg-blue-400 rounded-full mr-2" />
+                            <span>{item}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </AccordionContent>
+                  </AccordionItem>
+                </div>
               );
             })}
           </Accordion>

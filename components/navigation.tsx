@@ -115,16 +115,17 @@ export function Navigation() {
         >
           {navItems.map((item) => (
             <div key={item.label} className="relative flex items-center gap-1">
+
               {/* TEXT LINK */}
               <Link
-               href={item.href}
+                href={item.href}
                 className="text-sm font-medium transition-all duration-300 whitespace-nowrap hover:opacity-80"
                 style={{ color: textColor }}
               >
                 {item.label}
               </Link>
 
-              {/* CHEVRON */}
+              {/* CHEVRON (desktop toggle) */}
               {item.dropdown && (
                 <button
                   onClick={() =>
@@ -206,35 +207,38 @@ export function Navigation() {
         >
           {navItems.map((item) => (
             <div key={item.label} className="relative">
-              {item.dropdown ? (
+
+              {/* TEXT ALWAYS A LINK */}
+              <Link
+                href={item.href}
+                className="text-sm font-medium px-4 py-2 rounded transition-all duration-300 hover:opacity-80 block w-full text-left"
+                style={{ color: textColor }}
+              >
+                {item.label}
+              </Link>
+
+              {/* CHEVRON ONLY FOR TOGGLING */}
+              {item.dropdown && (
                 <button
                   onClick={() =>
                     setMobileExpandedDropdown(
                       mobileExpandedDropdown === item.label ? null : item.label
                     )
                   }
-                  className="text-sm font-medium px-4 py-2 rounded transition-all duration-300 hover:opacity-80 w-full text-left flex items-center justify-between"
+                  className="absolute right-4 top-1/2 -translate-y-1/2"
                   style={{ color: textColor }}
                 >
-                  {item.label}
                   <ChevronDown
                     className={`w-4 h-4 transition-transform duration-300 ${
                       mobileExpandedDropdown === item.label ? "rotate-180" : ""
                     }`}
                   />
                 </button>
-              ) : (
-                <Link
-                  href={item.href}
-                  className="text-sm font-medium px-4 py-2 rounded transition-all duration-300 hover:opacity-80 block w-full text-left"
-                  style={{ color: textColor }}
-                >
-                  {item.label}
-                </Link>
               )}
 
+              {/* MOBILE DROPDOWN */}
               {item.dropdown && mobileExpandedDropdown === item.label && (
-                <div className="pl-4 flex flex-col gap-1 max-h-48 overflow-y-auto mobile-scroll-hide">
+                <div className="pl-4 flex flex-col gap-1 max-h-48 overflow-y-auto mobile-scroll-hide mt-1">
                   {item.dropdown.map((subitem: any) =>
                     item.label === "SOLUTIONS" && subitem.index ? (
                       <button
