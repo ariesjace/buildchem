@@ -1,7 +1,7 @@
 "use client";
 
 import type React from "react";
-
+import toast from "react-hot-toast";
 import { useState } from "react";
 import { MapPin, Mail, Phone, Clock } from "lucide-react";
 
@@ -27,12 +27,24 @@ export function ContactContent() {
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    setIsSubmitting(false);
+const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  setIsSubmitting(true);
+
+  try {
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    });
+
+    if (!res.ok) {
+      const data = await res.json();
+      throw new Error(data.error || "Failed to send message");
+    }
+
+    toast.success("✅ Your message has been sent!");
+
     // Reset form
     setFormData({
       fullName: "",
@@ -42,7 +54,13 @@ export function ContactContent() {
       subject: "",
       message: "",
     });
-  };
+  } catch (error: any) {
+    toast.error(`❌ ${error.message || "Failed to send message"}`);
+  }
+
+  setIsSubmitting(false);
+};
+
 
   return (
     <section
@@ -368,17 +386,18 @@ export function ContactContent() {
               </div>
 
               {/* Submit Button */}
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full px-6 py-3 rounded-md font-semibold text-base md:text-lg transition-all duration-300 hover:opacity-90 disabled:opacity-50"
-                style={{
-                  background: "#DCB485",
-                  color: "#261c12",
-                }}
-              >
-                {isSubmitting ? "Sending..." : "Submit Inquiry"}
-              </button>
+            <button
+  type="submit"
+  disabled={isSubmitting}
+  className="w-full px-6 py-3 rounded-md font-semibold text-base md:text-lg transition-all duration-300 hover:opacity-90 disabled:opacity-50"
+  style={{
+    background: "#DCB485",
+    color: "#261c12",
+  }}
+>
+  {isSubmitting ? "Sending..." : "Submit Inquiry"}
+</button>
+
             </form>
           </div>
         </div>
