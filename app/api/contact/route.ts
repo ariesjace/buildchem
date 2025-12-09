@@ -25,8 +25,8 @@ export async function POST(req: Request) {
 
     // Send email
     await transporter.sendMail({
-      from: `"Website Contact Form" <${process.env.EMAIL_USER}>`,
-      to: "ariesjaceu@gmail.com",
+      from: `"Value Acquisitions Holdings Inc." <${process.env.EMAIL_USER}>`,
+      to: "phdevtechsolutions@gmail.com",
       subject: `New Inquiry: ${subject}`,
       html: `
         <h2>New Website Inquiry</h2>
@@ -38,6 +38,15 @@ export async function POST(req: Request) {
         <p><strong>Message:</strong><br>${message || "N/A"}</p>
       `,
     });
+
+    await transporter.sendMail({
+  from: `"Value Acquisitions Holdings Inc." <${process.env.EMAIL_USER}>`,
+  to: data.email,
+  subject: `Thanks for contacting us!`,
+  html: `<p>Hi ${data.fullName},</p>
+         <p>We have received your message and will respond shortly.</p>
+         <p>Best regards,<br>Value Acquisitions Holdings Inc.</p>`,
+});
 
     return NextResponse.json({ success: true });
   } catch (error: any) {
