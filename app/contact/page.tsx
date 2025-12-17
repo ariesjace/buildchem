@@ -1,14 +1,14 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { Navbar } from "@/components/navbar"
-import { Footer } from "@/components/footer"
-import { GoldButton } from "@/components/gold-button"
-import { Mail, Phone, MapPin, Building2 } from "lucide-react"
-import { useState } from "react"
-import Image from "next/image"
-import { ScrollToTop } from "@/components/scroll-to-top"
+import { Navbar } from "@/components/navbar";
+import { Footer } from "@/components/footer";
+import { GoldButton } from "@/components/gold-button";
+import { Mail, Phone, MapPin, Building2 } from "lucide-react";
+import { useState } from "react";
+import Image from "next/image";
+import { ScrollToTop } from "@/components/scroll-to-top";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -17,21 +17,25 @@ export default function ContactPage() {
     company: "",
     subject: "",
     message: "",
-  })
+  });
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    console.log("[v0] Form submitted:", formData)
+    e.preventDefault();
+    console.log("[v0] Form submitted:", formData);
     // Handle form submission
-    alert("Thank you for your message. We will get back to you soon.")
-  }
+    alert("Thank you for your message. We will get back to you soon.");
+  };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
-    })
-  }
+    });
+  };
 
   return (
     <div className="min-h-screen bg-white">
@@ -39,13 +43,22 @@ export default function ContactPage() {
 
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <Image src="/images/HERO.png" alt="Modern corporate buildings" fill className="object-cover" priority />
+          <Image
+            src="/images/HERO.png"
+            alt="Modern corporate buildings"
+            fill
+            className="object-cover"
+            priority
+          />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/20 to-transparent" />
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-4 text-balance">Contact Us</h1>
+          <h1 className="text-5xl md:text-6xl font-bold text-white mb-4 text-balance">
+            Contact Us
+          </h1>
           <p className="text-xl text-white/90 max-w-3xl mx-auto text-pretty">
-            Get in touch with our team to discuss partnership opportunities, investments, or general inquiries.
+            Get in touch with our team to discuss partnership opportunities,
+            investments, or general inquiries.
           </p>
         </div>
       </section>
@@ -60,8 +73,9 @@ export default function ContactPage() {
                 <div className="h-1 w-20 bg-accent rounded-full" />
                 <h2 className="text-4xl font-bold text-black">Let's Connect</h2>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  Whether you're interested in partnership opportunities, investment inquiries, or general questions
-                  about our holdings group, we're here to help.
+                  Whether you're interested in partnership opportunities,
+                  investment inquiries, or general questions about our holdings
+                  group, we're here to help.
                 </p>
               </div>
 
@@ -72,8 +86,12 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-black mb-1">Email</h3>
-                    <p className="text-muted-foreground">info@industrialholdings.com</p>
-                    <p className="text-muted-foreground">investor.relations@industrialholdings.com</p>
+                    <p className="text-muted-foreground">
+                      info@industrialholdings.com
+                    </p>
+                    <p className="text-muted-foreground">
+                      investor.relations@industrialholdings.com
+                    </p>
                   </div>
                 </div>
 
@@ -84,7 +102,9 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-semibold text-black mb-1">Phone</h3>
                     <p className="text-muted-foreground">+1 (555) 123-4567</p>
-                    <p className="text-muted-foreground">+1 (555) 123-4568 (Investor Relations)</p>
+                    <p className="text-muted-foreground">
+                      +1 (555) 123-4568 (Investor Relations)
+                    </p>
                   </div>
                 </div>
 
@@ -94,9 +114,15 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-black mb-1">Address</h3>
-                    <p className="text-muted-foreground">Industrial Holdings Group</p>
-                    <p className="text-muted-foreground">123 Industrial Parkway, Suite 500</p>
-                    <p className="text-muted-foreground">Corporate City, ST 12345</p>
+                    <p className="text-muted-foreground">
+                      Industrial Holdings Group
+                    </p>
+                    <p className="text-muted-foreground">
+                      123 Industrial Parkway, Suite 500
+                    </p>
+                    <p className="text-muted-foreground">
+                      Corporate City, ST 12345
+                    </p>
                   </div>
                 </div>
 
@@ -105,9 +131,15 @@ export default function ContactPage() {
                     <Building2 size={24} className="text-black" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-black mb-1">Business Hours</h3>
-                    <p className="text-muted-foreground">Monday - Friday: 8:00 AM - 6:00 PM</p>
-                    <p className="text-muted-foreground">Saturday - Sunday: Closed</p>
+                    <h3 className="font-semibold text-black mb-1">
+                      Business Hours
+                    </h3>
+                    <p className="text-muted-foreground">
+                      Monday - Friday: 8:00 AM - 6:00 PM
+                    </p>
+                    <p className="text-muted-foreground">
+                      Saturday - Sunday: Closed
+                    </p>
                   </div>
                 </div>
               </div>
@@ -117,7 +149,10 @@ export default function ContactPage() {
             <div className="bg-secondary p-8 md:p-12 rounded-lg">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-semibold text-black mb-2">
+                  <label
+                    htmlFor="name"
+                    className="block text-sm font-semibold text-black mb-2"
+                  >
                     Full Name *
                   </label>
                   <input
@@ -132,7 +167,10 @@ export default function ContactPage() {
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-semibold text-black mb-2">
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-semibold text-black mb-2"
+                  >
                     Email Address *
                   </label>
                   <input
@@ -147,7 +185,10 @@ export default function ContactPage() {
                 </div>
 
                 <div>
-                  <label htmlFor="company" className="block text-sm font-semibold text-black mb-2">
+                  <label
+                    htmlFor="company"
+                    className="block text-sm font-semibold text-black mb-2"
+                  >
                     Company / Organization
                   </label>
                   <input
@@ -161,7 +202,10 @@ export default function ContactPage() {
                 </div>
 
                 <div>
-                  <label htmlFor="subject" className="block text-sm font-semibold text-black mb-2">
+                  <label
+                    htmlFor="subject"
+                    className="block text-sm font-semibold text-black mb-2"
+                  >
                     Subject *
                   </label>
                   <select
@@ -181,7 +225,10 @@ export default function ContactPage() {
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-semibold text-black mb-2">
+                  <label
+                    htmlFor="message"
+                    className="block text-sm font-semibold text-black mb-2"
+                  >
                     Message *
                   </label>
                   <textarea
@@ -221,5 +268,5 @@ export default function ContactPage() {
       <Footer />
       <ScrollToTop />
     </div>
-  )
+  );
 }

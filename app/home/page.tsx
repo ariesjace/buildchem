@@ -1,12 +1,12 @@
-import { Navbar } from "@/components/navbar"
-import { Footer } from "@/components/footer"
-import { SectionHeader } from "@/components/section-header"
-import { GoldButton } from "@/components/gold-button"
-import Stack from "@/components/stack"
-import { Calendar } from "lucide-react"
-import Link from "next/link"
-import Image from "next/image"
-import { ScrollToTop } from "@/components/scroll-to-top"
+import { Navbar } from "@/components/navbar";
+import { Footer } from "@/components/footer";
+import { SectionHeader } from "@/components/section-header";
+import { GoldButton } from "@/components/gold-button";
+import Stack from "@/components/stack";
+import { Calendar } from "lucide-react";
+import Link from "next/link";
+import Image from "next/image";
+import { ScrollToTop } from "@/components/scroll-to-top";
 
 export default function HomePage() {
   return (
@@ -32,8 +32,9 @@ export default function HomePage() {
                 <span className="block text-accent">of Tomorrow</span>
               </h1>
               <p className="text-sm sm:text-base md:text-lg text-white/90 mb-6 text-pretty leading-relaxed">
-                A leading industrial holdings company managing construction, cement production, and industrial materials
-                with strength, reliability, and scale.
+                A leading industrial holdings company managing construction,
+                cement production, and industrial materials with strength,
+                reliability, and scale.
               </p>
               <div className="flex flex-col sm:flex-row items-start gap-4">
                 <Link href="/companies">
@@ -42,7 +43,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="w-[320px] h-[121px] sm:w-[380px] sm:h-[144px] md:w-[450px] md:h-[171px] lg:w-[600px] lg:h-[227px] flex-shrink-0 drop-shadow-2xl mx-auto md:mx-0">
+            <div className="w-[320px] h-[121px] sm:w-[380px] sm:h-36 md:w-[450px] md:h-[171px] lg:w-[600px] lg:h-[227px] shrink-0 drop-shadow-2xl mx-auto md:mx-0">
               <Stack
                 randomRotation={false}
                 sensitivity={180}
@@ -51,11 +52,27 @@ export default function HomePage() {
                 autoplayDelay={3000}
                 pauseOnHover={true}
                 cards={[
-                  <div key={0} className="w-full h-full bg-white rounded-2xl overflow-hidden shadow-2xl">
-                    <Image src="/images/vah-hero.png" alt="VALUE ACQUISITIONS HOLDINGS INC." fill className="object-contain" />
+                  <div
+                    key={0}
+                    className="w-full h-full bg-white rounded-2xl overflow-hidden shadow-2xl"
+                  >
+                    <Image
+                      src="/images/vah-hero.png"
+                      alt="VALUE ACQUISITIONS HOLDINGS INC."
+                      fill
+                      className="object-contain"
+                    />
                   </div>,
-                  <div key={1} className="w-full h-full bg-white rounded-2xl overflow-hidden shadow-2xl">
-                    <Image src="/images/buildchem-hero.png" alt="Buildchem Solutions" fill className="object-contain" />
+                  <div
+                    key={1}
+                    className="w-full h-full bg-white rounded-2xl overflow-hidden shadow-2xl"
+                  >
+                    <Image
+                      src="/images/buildchem-hero.png"
+                      alt="Buildchem Solutions"
+                      fill
+                      className="object-contain"
+                    />
                   </div>,
                 ]}
               />
@@ -66,7 +83,10 @@ export default function HomePage() {
 
       <section className="py-24 bg-background">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <SectionHeader title="Our Companies" subtitle="Strategic investments across critical industrial sectors" />
+          <SectionHeader
+            title="Our Companies"
+            subtitle="Strategic investments across critical industrial sectors"
+          />
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
             {[
               {
@@ -108,19 +128,30 @@ export default function HomePage() {
 
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <SectionHeader title="Our Solutions" subtitle="Comprehensive industrial solutions for every need" />
+          <SectionHeader
+            title="Our Solutions"
+            subtitle="Comprehensive industrial solutions for every need"
+          />
           <div className="mt-16 max-w-full mx-auto">
             <div className="relative h-[400px] md:h-[500px] border-2 border-border hover:border-accent hover:shadow-[0_0_30px_rgba(212,175,55,0.5)] overflow-hidden group transition-all duration-500 rounded-lg">
               <div className="absolute inset-0">
-                <Image src="/images/solutions.png" alt="Industrial construction project" fill className="object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
+                <Image
+                  src="/images/solutions.png"
+                  alt="Industrial construction project"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-linear-to-r from-black/80 via-black/60 to-black/40" />
               </div>
               <div className="relative z-10 h-full flex items-center justify-center px-8 md:px-16">
                 <div className="text-center space-y-6 max-w-3xl">
-                  <h3 className="text-3xl md:text-4xl font-bold text-white">Explore Our Solutions</h3>
+                  <h3 className="text-3xl md:text-4xl font-bold text-white">
+                    Explore Our Solutions
+                  </h3>
                   <p className="text-lg md:text-xl text-white/90 leading-relaxed">
-                    From construction services to industrial materials and specialized products, discover how our
-                    integrated solutions drive success across every project.
+                    From construction services to industrial materials and
+                    specialized products, discover how our integrated solutions
+                    drive success across every project.
                   </p>
                   <Link href="/solutions">
                     <GoldButton>View Solutions</GoldButton>
@@ -134,7 +165,10 @@ export default function HomePage() {
 
       <section className="py-24 bg-background">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <SectionHeader title="What's New" subtitle="Latest updates and insights from our companies" />
+          <SectionHeader
+            title="What's New"
+            subtitle="Latest updates and insights from our companies"
+          />
           <div className="grid md:grid-cols-2 gap-8 mt-16">
             {[
               {
@@ -145,7 +179,8 @@ export default function HomePage() {
                 image: "/images/blogs.jpg",
               },
               {
-                title: "Progressive Dynamics Completes Major Infrastructure Project",
+                title:
+                  "Progressive Dynamics Completes Major Infrastructure Project",
                 date: "December 10, 2024",
                 excerpt:
                   "Successfully delivered a landmark bridge construction project ahead of schedule, showcasing engineering excellence.",
@@ -173,10 +208,14 @@ export default function HomePage() {
                   <h3 className="text-2xl font-bold text-black group-hover:text-accent transition-colors duration-500">
                     {post.title}
                   </h3>
-                  <p className="text-muted-foreground leading-relaxed">{post.excerpt}</p>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {post.excerpt}
+                  </p>
                   <button className="text-sm font-semibold text-black group-hover:text-accent flex items-center space-x-2 transition-colors duration-500">
                     <span>Read More</span>
-                    <span className="transform group-hover:translate-x-2 transition-transform duration-500">→</span>
+                    <span className="transform group-hover:translate-x-2 transition-transform duration-500">
+                      →
+                    </span>
                   </button>
                 </div>
               </div>
@@ -188,9 +227,12 @@ export default function HomePage() {
       <section className="py-24 bg-black text-white relative overflow-hidden">
         <div className="absolute inset-0 gradient-gold-to-transparent opacity-10" />
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center space-y-8 relative z-10">
-          <h2 className="text-4xl md:text-5xl font-bold text-balance">Ready to Build the Future Together?</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-balance">
+            Ready to Build the Future Together?
+          </h2>
           <p className="text-xl text-gray-300 leading-relaxed">
-            Connect with us to explore partnership opportunities and learn more about our companies.
+            Connect with us to explore partnership opportunities and learn more
+            about our companies.
           </p>
           <Link href="/contact">
             <GoldButton>Get In Touch</GoldButton>
@@ -201,5 +243,5 @@ export default function HomePage() {
       <Footer />
       <ScrollToTop />
     </div>
-  )
+  );
 }
