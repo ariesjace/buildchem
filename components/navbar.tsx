@@ -45,7 +45,7 @@ export function Navbar() {
           >
             <div className={`relative w-12 h-12 transition-all duration-300 ${isScrolled ? "brightness-0" : ""}`}>
               <Image
-                src={isSolutionsPage ? "/buildchem-small.png" : "/images/vah-white-small.png"}
+                src={isSolutionsPage ? "/images/buildchem-small.png" : "/images/vah-white-small.png"}
                 alt={isSolutionsPage ? "Buildchem Logo" : "VAH Logo"}
                 fill
                 className="object-contain"
