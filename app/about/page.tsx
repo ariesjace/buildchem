@@ -7,7 +7,7 @@ import Image from "next/image";
 import { ScrollToTop } from "@/components/scroll-to-top";
 
 export const metadata: Metadata = {
-  title: "About Us | Industrial Holdings Group",
+  title: "About Us | Value Acquisitions Inc.",
   description:
     "Learn about our mission, vision, and commitment to industrial excellence, sustainability, and long-term value creation.",
 };

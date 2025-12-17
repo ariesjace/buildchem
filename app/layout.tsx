@@ -10,7 +10,7 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: "Industrial Holdings Group | Construction, Cement & Materials",
+  title: "Value Acquisitions Inc.",
   description:
     "Leading industrial holdings company managing construction, cement production, and industrial materials companies with strength, reliability, and scale.",
   generator: "v0.app",

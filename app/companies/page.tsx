@@ -8,7 +8,7 @@ import Link from "next/link"
 import Image from "next/image"
 
 export const metadata: Metadata = {
-  title: "Our Companies | Industrial Holdings Group",
+  title: "Our Companies | Value Acquisitions Inc.",
   description: "Explore our portfolio of market-leading companies in construction, infrastructure, and industrial materials.",
 }
 
