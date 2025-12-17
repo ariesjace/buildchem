@@ -1,5 +1,23 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
+import path from "path";
+
+/**
+ * ✅ REQUIRED FOR NODEMAILER ON VERCEL
+ * Prevents Edge runtime crashes
+ */
+export const runtime = "nodejs";
+
+/**
+ * ✅ VERCEL-SAFE ABSOLUTE PATH
+ * (public/ is NOT available via relative paths in serverless)
+ */
+const LOGO_PATH = path.join(
+  process.cwd(),
+  "public",
+  "images",
+  "vah-logo-2.png"
+);
 
 export async function POST(req: Request) {
   try {
@@ -11,6 +29,14 @@ export async function POST(req: Request) {
         { error: "Please fill in all required fields." },
         { status: 400 }
       );
+    }
+
+    /**
+     * ✅ ENV SAFETY CHECK
+     * Prevents silent failure on Vercel
+     */
+    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+      throw new Error("Missing EMAIL_USER or EMAIL_PASS environment variables");
     }
 
     const transporter = nodemailer.createTransport({
@@ -154,7 +180,7 @@ export async function POST(req: Request) {
       attachments: [
         {
           filename: "vah-logo-2.png",
-          path: "public/images/vah-logo-2.png",
+          path: LOGO_PATH,
           cid: "vah-logo-2",
         },
       ],
@@ -171,7 +197,7 @@ export async function POST(req: Request) {
       attachments: [
         {
           filename: "vah-logo-2.png",
-          path: "public/images/vah-logo-2.png",
+          path: LOGO_PATH,
           cid: "vah-logo-2",
         },
       ],
