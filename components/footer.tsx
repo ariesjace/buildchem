@@ -40,32 +40,37 @@ export function Footer() {
           {/* Links Column */}
           <div>
             <h4 className="font-semibold mb-4 text-sm md:text-base" style={{ color: accentColor }}>
-              INFORMATION
+              QUICK LINKS
             </h4>
             <ul className="space-y-2 text-xs md:text-sm" style={{ color: textColor }}>
               <li>
-                <a href="#" className="hover:opacity-80 transition-opacity" style={{ color: textColor }}>
-                  Frequently Asked Questions
+                <a href="/home" className="hover:opacity-80 transition-opacity" style={{ color: textColor }}>
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="/about" className="hover:opacity-80 transition-opacity" style={{ color: textColor }}>
+                  About Us
+                </a>
+              </li>
+              <li>
+                <a href="/companies" className="hover:opacity-80 transition-opacity" style={{ color: textColor }}>
+                  Our Companies
+                </a>
+              </li>
+              <li>
+                <a href="/solutions" className="hover:opacity-80 transition-opacity" style={{ color: textColor }}>
+                  Solutions
+                </a>
+              </li>
+              <li>
+                <a href="/contact" className="hover:opacity-80 transition-opacity" style={{ color: textColor }}>
+                  Contact Us
                 </a>
               </li>
               <li>
                 <a href="/privacy-policy" className="hover:opacity-80 transition-opacity" style={{ color: textColor }}>
                   Privacy Policy
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:opacity-80 transition-opacity" style={{ color: textColor }}>
-                  Warranty Policy
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:opacity-80 transition-opacity" style={{ color: textColor }}>
-                  Terms and Conditions
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:opacity-80 transition-opacity" style={{ color: textColor }}>
-                  Careers
                 </a>
               </li>
             </ul>
